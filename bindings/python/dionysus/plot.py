@@ -1,4 +1,4 @@
-def plot_diagram(dgm, show = False, labels = False):
+def plot_diagram(dgm, show = False, labels = False, ax=None):
     """Plot the persistence diagram."""
 
     import matplotlib.pyplot as plt
@@ -9,7 +9,8 @@ def plot_diagram(dgm, show = False, labels = False):
     min_death = min(p.death for p in dgm if p.death != inf)
     max_death = max(p.death for p in dgm if p.death != inf)
 
-    ax = plt.axes()
+    if ax is None: 
+        ax = plt.axes()
     ax.set_aspect('equal', 'datalim')
 
     min_diag = min(min_birth, min_death)
